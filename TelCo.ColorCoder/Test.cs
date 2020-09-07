@@ -4,8 +4,8 @@ using System.Drawing;
 
 
 namespace TelCo.ColorCoder{
-  class Test{
-    public void test(){
+  internal class Test{
+    internal void test(){
       int pairNumber = 4;
       ColorPair testPair1 = Program.GetColorFromPairNumber(pairNumber);
       Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", pairNumber, testPair1);
