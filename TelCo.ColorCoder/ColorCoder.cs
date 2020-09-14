@@ -25,25 +25,23 @@ namespace TelCo.ColorCoder{
                 return pair;
         }
         internal static int GetPairNumberFromColor(ColorPair pair){
-            int majorIndex = -1;
-            for (int i = 0; i < colorMapMajor.Length; i++){
-                if (colorMapMajor[i] == pair.majorColor){
-                    majorIndex = i;
-                    break;
-                }
-            }
-            int minorIndex = -1;
-            for (int i = 0; i < colorMapMinor.Length; i++){
-                if (colorMapMinor[i] == pair.minorColor){
-                    minorIndex = i;
-                    break;
-                }
-            }
+            int majorIndex = FindIndexInTheArray(colorMapMajor, pair.majorColor);
+            int minorIndex = FindIndexInTheArray(colorMapMinor, pair.minorColor);
             if (majorIndex == -1 || minorIndex == -1){
                 throw new ArgumentException(
                     string.Format("Unknown Colors: {0}", pair.ToString()));
             }
             return (majorIndex * colorMapMinor.Length) + (minorIndex + 1);
+        }
+        internal static int FindIndexInTheArray(Color[] colorArray, Color _color){
+            int index = -1;
+            for(int i = 0; i < colorArray.Length; i++){
+                if(colorArray[i] == _color){
+                    index = i;
+                    break;
+                }
+            }
+            return index;
         }
     }
 }
